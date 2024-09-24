@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <!-- AR -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.7/aframe/build/aframe-ar.min.js"></script>
+    <!-- Material Button -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;  /* 水平居中对齐 */
+            align-items: center;  /* 垂直居中 */
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+        }
+        .square-btn {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;  /* 每个按钮之间留出10px的间距 */
+        }
+    </style>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+        <a-marker preset="hiro">
+            <a-box position="0 0.5 0" material="color: red;" id="colorBox"></a-box>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <button class="btn square-btn red lighten-1"></button>
+    <button class="btn square-btn green lighten-1"></button>
+    <button class="btn square-btn blue lighten-1"></button>
+</body>
+
+<script>
+    const greenButton = document.querySelector('#greenButton');
+    const blueButton = document.querySelector('#blueButton');
+    const yellowButton = document.querySelector('#yellowButton');
+    const colorBox = document.querySelector('#colorBox');
+    
+    greenButton.addEventListener('click', () => {
+        colorBox.setAttribute('material', 'color: green;');
+    })
+    blueButton.addEventListener('click', () => {
+        colorBox.setAttribute('material', 'color: blue;');
+    })
+    yellowButton.addEventListener('click', () => {
+        colorBox.setAttribute('material', 'color: yellow;');
+    })
+</script>
+
+</html>
