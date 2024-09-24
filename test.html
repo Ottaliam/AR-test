@@ -5,25 +5,30 @@
     <!-- Material Button -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 
+    <!-- 视口设置，确保在移动设备上的视图行为一致 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
     <style>
         /* 防止按钮点击后的默认行为 */
         button {
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
+            outline: none; /* 移除点击时按钮的焦点框 */
+            -webkit-tap-highlight-color: transparent; /* 移除点击时移动设备上的高亮 */
         }
 
+        /* 使用 absolute 替换 fixed，防止容器偏移问题 */
         .button-container {
             display: flex;
-            flex-direction: column; /* 将容器内容改为纵向排列 */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: fixed;
+            position: absolute; /* 改为 absolute 布局 */
             top: 0;
-            width: 100%;
+            left: 0;
+            width: 100vw; /* 使用视口宽度单位，确保宽度稳定 */
             background-color: white;
             z-index: 9999;
-            box-sizing: border-box; /* 确保padding不影响宽度 */
+            box-sizing: border-box;
         }
 
         .button-row {
@@ -98,11 +103,11 @@
     
     redButton.addEventListener('click', () => {
         changeModelColor('red');
-    })
+    });
     greenButton.addEventListener('click', () => {
         changeModelColor('green');
-    })
+    });
     blueButton.addEventListener('click', () => {
         changeModelColor('blue');
-    })
+    });
 </script>
