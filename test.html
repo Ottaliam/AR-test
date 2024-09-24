@@ -10,8 +10,9 @@
     <style>
         .button-container {
             display: flex;
-            justify-content: center;  /* 水平居中对齐 */
-            align-items: center;  /* 垂直居中 */
+            flex-direction: column; /* 将容器内容改为纵向排列 */
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             position: fixed;
             top: 0;
@@ -19,44 +20,74 @@
             background-color: white;
             z-index: 9999;
         }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
         .square-btn {
             width: 100px;
             height: 100px;
-            margin: 0 10px;  /* 每个按钮之间留出10px的间距 */
-            z-index: 9999;
+            margin: 0 10px;
+        }
+
+        .credit {
+            font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs>
+        <a-assets>
+            <a-asset-item id="tableModel" src="Table.glb"></a-asset-item>
+        </a-assets>
+
         <a-marker preset="hiro">
-            <a-box position="0 0.5 0" material="color: red;" id="colorBox"></a-box>
+            <a-entity id="table" gltf-model="#tableModel" position="0 0.65 0"></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
 
     <div class="button-container">
-        <button class="btn square-btn red lighten-1"></button>
-        <button class="btn square-btn green lighten-1"></button>
-        <button class="btn square-btn blue lighten-1"></button>
+        <div class="button-row">
+            <button class="btn square-btn red lighten-1" id="redButton"></button>
+            <button class="btn square-btn green lighten-1" id="greenButton"></button>
+            <button class="btn square-btn blue lighten-1" id="blueButton"></button>
+        </div>
+        
+        <p class="credit">
+            Table by Hunter Paramore <a href="https://creativecommons.org/licenses/by/3.0/">CC-BY</a> via <a href="https://poly.pizza/m/7qAyGZnerYt">Poly Pizza</a>
+        </p>
     </div>
 </body>
 
 <script>
+    const redButton = document.querySelector('#redButton');
     const greenButton = document.querySelector('#greenButton');
     const blueButton = document.querySelector('#blueButton');
-    const yellowButton = document.querySelector('#yellowButton');
-    const colorBox = document.querySelector('#colorBox');
+    const table = document.querySelector('#table');
+
+    const changeModelColor = (color) => {
+        table.getObject3D('mesh').traverse((node) => {
+            if (node.isMesh) {
+                node.material.color.set(color);
+            }
+        });
+    };
     
+    redButton.addEventListener('click', () => {
+        changeModelColor('red');
+    })
     greenButton.addEventListener('click', () => {
-        colorBox.setAttribute('material', 'color: green;');
+        changeModelColor('green');
     })
     blueButton.addEventListener('click', () => {
-        colorBox.setAttribute('material', 'color: blue;');
-    })
-    yellowButton.addEventListener('click', () => {
-        colorBox.setAttribute('material', 'color: yellow;');
+        changeModelColor('blue');
     })
 </script>
 
