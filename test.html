@@ -15,7 +15,9 @@
 </head>
 
 <body>
-    <a-scene arjs>
+    <a-scene embedded arjs webxr="requiredFeatures: dom-overlay;
+                    overlayElement: canvas;
+                    referenceSpaceType: local">
         <a-assets>
             <a-asset-item id="tableModel" src="Table.glb"></a-asset-item>
         </a-assets>
