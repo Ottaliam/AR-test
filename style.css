@@ -3,15 +3,22 @@ body {
     overflow: hidden;
 }
 
+#grayButton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 5px;
+    z-index: 100;
+}
+
 .button-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.2);
-    z-index: 9999;
+    z-index: 99;
     padding: 5px 0;
-    visibility: hidden;
 }
 
 .button-row {
