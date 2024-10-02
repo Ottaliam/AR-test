@@ -28,6 +28,9 @@ greenButton.addEventListener('click', () => {
 blueButton.addEventListener('click', () => {
     changeModelColor('blue');
 });
+table.addEventListener('click', () => {
+    toggleModelColor();
+})
 /*
 
 let longPressTimer;
@@ -57,9 +60,6 @@ table.addEventListener('touchstart', onPressStart);
 table.addEventListener('touchend', onPressEnd);
 table.addEventListener('touchmove', onPressCancel);
 table.addEventListener('touchcancel', onPressCancel);
-table.addEventListener('click', () => {
-    toggleModelColor();
-})
 
 table.addEventListener('mousedown', onPressStart);
 table.addEventListener('mouseup', onPressEnd);
