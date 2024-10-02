@@ -1,68 +1,20 @@
+<!DOCTYPE html>
+<html>
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Amazon AR View</title>
     <!-- AR -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.7/aframe/build/aframe-ar.min.js"></script>
     <!-- Material Button -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-
-    <!-- 视口设置，确保在移动设备上的视图行为一致 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <style>
-        /* 防止按钮点击后的默认行为 */
-        button {
-            outline: none; /* 移除点击时按钮的焦点框 */
-            -webkit-tap-highlight-color: transparent; /* 移除点击时移动设备上的高亮 */
-        }
-
-        /* 使用 absolute 替换 fixed，防止容器偏移问题 */
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: absolute; /* 改为 absolute 布局 */
-            top: 0;
-            left: 0;
-            width: 100vw; /* 使用视口宽度单位，确保宽度稳定 */
-            background-color: white;
-            z-index: 9999;
-            box-sizing: border-box;
-        }
-
-        .button-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .square-btn {
-            width: 100px;
-            height: 100px;
-            margin: 0 10px;
-        }
-
-        .credit {
-            font-size: 14px;
-            text-align: center;
-        }
-
-        /* 添加响应式设计 */
-        @media (max-width: 600px) {
-            .square-btn {
-                width: 80px;
-                height: 80px;
-            }
-            .button-container {
-                padding: 10px;
-            }
-        }
-    </style>
+    <!-- Custom -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
+<body>
     <a-scene embedded arjs>
         <a-assets>
             <a-asset-item id="tableModel" src="Table.glb"></a-asset-item>
@@ -87,27 +39,4 @@
     </div>
 </body>
 
-<script>
-    const redButton = document.querySelector('#redButton');
-    const greenButton = document.querySelector('#greenButton');
-    const blueButton = document.querySelector('#blueButton');
-    const table = document.querySelector('#table');
-
-    const changeModelColor = (color) => {
-        table.getObject3D('mesh').traverse((node) => {
-            if (node.isMesh) {
-                node.material.color.set(color);
-            }
-        });
-    };
-    
-    redButton.addEventListener('click', () => {
-        changeModelColor('red');
-    });
-    greenButton.addEventListener('click', () => {
-        changeModelColor('green');
-    });
-    blueButton.addEventListener('click', () => {
-        changeModelColor('blue');
-    });
-</script>
+</html>
