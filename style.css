@@ -6,6 +6,7 @@ body {
 .button-container {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 9999;
