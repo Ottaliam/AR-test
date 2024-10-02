@@ -28,6 +28,7 @@ greenButton.addEventListener('click', () => {
 blueButton.addEventListener('click', () => {
     changeModelColor('blue');
 });
+/*
 
 let longPressTimer;
 let longPressTriggered = false;
@@ -68,4 +69,4 @@ document.addEventListener('mousedown', (e) => {
     if (!buttonContainer.contains(e.target)) {
         buttonContainer.style.visibility = 'hidden';
     }
-})
+})*/
