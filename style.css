@@ -11,7 +11,7 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 9999;
     padding: 5px 0;
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 .button-row {

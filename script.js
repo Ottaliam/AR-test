@@ -31,7 +31,7 @@ blueButton.addEventListener('click', () => {
 table.addEventListener('click', () => {
     toggleModelColor();
 })
-/*
+
 
 let longPressTimer;
 let longPressTriggered = false;
@@ -56,17 +56,11 @@ const onPressCancel = () => {
     clearTimeout(longPressTimer);
 }
 
-table.addEventListener('touchstart', onPressStart);
-table.addEventListener('touchend', onPressEnd);
-table.addEventListener('touchmove', onPressCancel);
-table.addEventListener('touchcancel', onPressCancel);
+document.addEventListener('touchstart', onPressStart);
+document.addEventListener('touchend', onPressEnd);
+document.addEventListener('touchmove', onPressCancel);
+document.addEventListener('touchcancel', onPressCancel);
 
-table.addEventListener('mousedown', onPressStart);
-table.addEventListener('mouseup', onPressEnd);
-table.addEventListener('mouseleave', onPressCancel);
-
-document.addEventListener('mousedown', (e) => {
-    if (!buttonContainer.contains(e.target)) {
-        buttonContainer.style.visibility = 'hidden';
-    }
-})*/
+document.addEventListener('mousedown', onPressStart);
+document.addEventListener('mouseup', onPressEnd);
+document.addEventListener('mouseleave', onPressCancel);
