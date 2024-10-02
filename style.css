@@ -15,7 +15,7 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 9999;
     box-sizing: border-box;
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 .button-row {
